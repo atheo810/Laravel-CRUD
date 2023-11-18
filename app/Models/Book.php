@@ -14,5 +14,10 @@ class Book extends Model
     const UPDATED_AT = 'updated_at';
 
 
-    protected $fillable = ['book_name', 'description'];
+    protected $fillable = ['book_name', 'description', 'category_id'];
+
+    public function category()
+    {
+        return $this->belongsTo(BookCategory::class, 'category_id');
+    }
 }
