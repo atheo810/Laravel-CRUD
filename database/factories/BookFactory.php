@@ -21,6 +21,7 @@ class BookFactory extends Factory
             //
             'book_name' => $this->faker->name(),
             'description' => $this->faker->name(),
+            'is_deleted' => $this->faker->boolean(0),
         ];
     }
 }
