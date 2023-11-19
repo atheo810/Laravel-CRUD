@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string("book_name");
             $table->string("description");
             $table->string("category_id");
+            $table->boolean("is_deleted");
             $table->timestamps();
         });
     }
