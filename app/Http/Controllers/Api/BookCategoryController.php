@@ -7,7 +7,6 @@ use App\Http\Requests\StoreBookCategoryRequest;
 use App\Http\Requests\UpdateBookCategoryRequest;
 use App\Http\Resources\BookCategoryResource;
 use App\Http\Resources\BookResource;
-use App\Models\Book;
 use App\Models\BookCategory;
 use Illuminate\Http\Request;
 
