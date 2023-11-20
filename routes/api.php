@@ -22,5 +22,15 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 Route::get('book', [BookController::class, 'index']);
-Route::get('bookCategory', [BookCategoryController::class, 'index']);
+
 Route::post('book/create', [BookController::class, 'create']);
+
+Route::prefix('bookCategory')
+    ->name('bookCategory')
+    ->group(function () {
+        Route::get('/', [BookCategoryController::class, 'index'])->name('index');
+        Route::post('/', [BookCategoryController::class, 'store'])->name('store');
+        Route::get('/{bookCategoryId}', [BookCategoryController::class, 'show'])->name('show');
+        Route::put('/{bookCategoryId}', [BookCategoryController::class, 'update'])->name('update');
+        Route::delete('/', [BookCategoryController::class, 'delete'])->name('delete');
+    });
