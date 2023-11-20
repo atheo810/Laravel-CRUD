@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\BookCategoryController;
 use App\Http\Controllers\BookController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -21,3 +22,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 Route::get('book', [BookController::class, 'index']);
+Route::get('bookCategory', [BookCategoryController::class, 'index']);
+Route::post('book/create', [BookController::class, 'create']);
