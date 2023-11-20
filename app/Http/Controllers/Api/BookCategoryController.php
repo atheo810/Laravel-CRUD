@@ -28,7 +28,15 @@ class BookCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'category' => ['required', 'string', 'max:255']
+        ]);
+
+        $bookCategory = BookCategory::create([
+            'category' => $request->category
+        ]);
+
+        return new BookCategoryResource($bookCategory);
     }
 
     /**
