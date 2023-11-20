@@ -30,7 +30,7 @@ Route::prefix('bookCategory')
     ->group(function () {
         Route::get('/', [BookCategoryController::class, 'index'])->name('index');
         Route::post('/', [BookCategoryController::class, 'store'])->name('store');
-        Route::get('/{bookCategoryId}', [BookCategoryController::class, 'show'])->name('show');
-        Route::put('/{bookCategoryId}', [BookCategoryController::class, 'update'])->name('update');
-        Route::delete('/', [BookCategoryController::class, 'delete'])->name('delete');
+        Route::get('/{bookCategory}', [BookCategoryController::class, 'show'])->name('show');
+        Route::put('/{bookCategory}', [BookCategoryController::class, 'update'])->name('update');
+        Route::delete('/{bookCategory}', [BookCategoryController::class, 'destroy'])->name('destroy');
     });
