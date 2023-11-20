@@ -3,7 +3,11 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreBookCategoryRequest;
+use App\Http\Requests\UpdateBookCategoryRequest;
 use App\Http\Resources\BookCategoryResource;
+use App\Http\Resources\BookResource;
+use App\Models\Book;
 use App\Models\BookCategory;
 use Illuminate\Http\Request;
 
@@ -26,11 +30,8 @@ class BookCategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreBookCategoryRequest $request)
     {
-        $request->validate([
-            'category' => ['required', 'string', 'max:255']
-        ]);
 
         $bookCategory = BookCategory::create([
             'category' => $request->category
@@ -48,7 +49,7 @@ class BookCategoryController extends Controller
     public function show(BookCategory $bookCategory)
     {
         //
-
+        return new BookCategoryResource($bookCategory);
     }
 
     /**
@@ -58,9 +59,12 @@ class BookCategoryController extends Controller
      * @param  \App\Models\BookCategory  $bookCategory
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, BookCategory $bookCategory)
+    public function update(UpdateBookCategoryRequest $request, BookCategory $bookCategory)
     {
-        //
+        $bookCategory->update([
+            'category' => $request->category
+        ]);
+        return new BookCategoryResource($bookCategory);
     }
 
     /**
@@ -72,5 +76,7 @@ class BookCategoryController extends Controller
     public function destroy(BookCategory $bookCategory)
     {
         //
+        $bookCategory->delete();
+        return new BookCategoryResource($bookCategory);
     }
 }
