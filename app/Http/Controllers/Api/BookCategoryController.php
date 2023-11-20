@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\BookCategoryResource;
 use App\Models\BookCategory;
 use Illuminate\Http\Request;
 
@@ -16,10 +17,7 @@ class BookCategoryController extends Controller
     public function index()
     {
         //
-        $bookCategory = BookCategory::all();
-        return response()->json([
-            $bookCategory
-        ], 200,);
+        return BookCategoryResource::collection(BookCategory::all());
     }
 
     /**
@@ -42,6 +40,7 @@ class BookCategoryController extends Controller
     public function show(BookCategory $bookCategory)
     {
         //
+
     }
 
     /**
